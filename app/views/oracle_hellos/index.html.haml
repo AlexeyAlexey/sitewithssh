@@ -1,0 +1,35 @@
+%h1 Listing oracle_hellos
+- if notice
+  %p#notice
+    =notice
+
+=form_tag(oracle_hellos_path, method: "get") do
+  =label_tag :ware, "ware"
+  =text_field_tag :ware
+  =label_tag :filter, "filter"
+  =text_field_tag :filter
+  =submit_tag "Filter"
+  
+.table
+  .header
+  -if !@oracle_hellos.nil?   
+    %table
+      %thead
+        %tr
+          -@oracle_hellos[0].attributes.each_key do |key|
+            %th=key
+      %tbody
+        -@oracle_hellos.each do |row|
+          %tr    
+            -row.attributes.each do |key, value|
+              %td=value
+  -else 
+%p Enter "Filter"
+
+
+
+
+
+
+   
+

@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Sitewithssh
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body{:class => controller.controller_name}
+    #banner
+      .vpn
+        %form{:method => 'get', :action => vpn_oracle_hellos_path}
+          %input{:type => "submit", :name => "VPN", :value => (flash[:vpn_status])}          
+        %p 
+          = @status_vpn
+    #columns
+      #main
+        = yield
+        %h1 
+          = flash[:vpn_status] || "vpn"

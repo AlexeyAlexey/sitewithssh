@@ -1,0 +1,11 @@
+= form_for(@oracle_hello) do |f|
+  - if @oracle_hello.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@oracle_hello.errors.count, "error")
+        prohibited this oracle_hello from being saved:
+      %ul
+        - @oracle_hello.errors.full_messages.each do |msg|
+          %li= msg
+  .actions
+    = f.submit
